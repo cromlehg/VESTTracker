@@ -1,14 +1,14 @@
-💎 EOS Tracker
+💎 VEST Tracker
 ========================
 
-EOS Tracker is a Frontend based on Angular4 that connects to [EOS Tracker API](https://github.com/EOSEssentials/EOSTracker-API).
+VEST Tracker is a Frontend based on Angular4 that connects to [VEST Tracker API](https://github.com/cromlehg/VESTTracker-API).
 
 📌 Getting Started
 ------------
 
 ```bash
-$ git clone git@github.com:EOSEssentials/EOSTracker.git
-$ cd EOSTracker
+$ git clone git@github.com:cromlehg/VESTTracker.git
+$ cd VESTTracker
 $ npm install
 ```
 
