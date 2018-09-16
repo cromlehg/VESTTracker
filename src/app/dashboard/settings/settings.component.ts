@@ -61,7 +61,4 @@ export const LANGUAGES = [
   { code: 'zh', name: 'Chinese' }
 ];
 
-export const APIS = [
-  { name: 'VEST Alion', endpoint: 'http://148.251.194.72:8888' },
-  { name: 'VEST BlockWit', endpoint: 'http://136.243.92.49:8888' }
-]
+export const APIS = []
