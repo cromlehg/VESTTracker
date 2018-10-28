@@ -1,10 +1,10 @@
 <div fxLayout="row" fxLayoutAlign="space-between center" style="margin:20px 5px 10px;">
-  <h3 class="mat-subheading-2" fxFlex style="color: white;">
+  <h3 class="mat-subheading-2" fxFlex>
     {{ 'Recent Transactions' | translate }}
   </h3>
   <a mat-flat-button color="accent" [routerLink]="['/transactions']">{{ 'ViewAll' | translate }}</a>
 </div>
-<div class="table-container" *ngIf="transactions$ | async as transactions; else loading">
+<div class="table-container greenTopBorder" *ngIf="transactions$ | async as transactions; else loading">
   <div class="table-container">
     <table mat-table [dataSource]="transactions" style="border:none;">
       <ng-container *ngIf="columnHeaders$ | async as columnHeaders">

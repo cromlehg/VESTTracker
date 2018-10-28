@@ -7,6 +7,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MomentModule } from 'ngx-moment';
 import { PrettyJsonModule } from 'angular2-prettyjson';
 import { NgxJsonViewerModule } from 'ngx-json-viewer';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
@@ -20,6 +21,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatBadgeModule } from '@angular/material/badge';
+import {MatMenuModule} from '@angular/material/menu';
 
 import { TableComponent } from './table/table.component';
 import { MasterpageComponent } from './masterpage/masterpage.component';
@@ -32,6 +34,10 @@ import { Id64Component } from './id64/id64.component';
 
 import { ToKbPipes } from './pipes/tokb.pipes';
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faTelegram, faFacebook, faTwitter, faGithub, faRedditAlien } from '@fortawesome/free-brands-svg-icons';
+library.add(faTelegram, faFacebook, faTwitter, faGithub, faRedditAlien);
+
 const sharedModules = [
   CommonModule,
   FormsModule,
@@ -41,7 +47,8 @@ const sharedModules = [
   TranslateModule,
   MomentModule,
   PrettyJsonModule,
-  NgxJsonViewerModule
+  NgxJsonViewerModule,
+  FontAwesomeModule
 ];
 
 const sharedMaterialModules = [
@@ -56,7 +63,8 @@ const sharedMaterialModules = [
   MatTableModule,
   MatExpansionModule,
   MatTabsModule,
-  MatBadgeModule
+  MatBadgeModule,
+  MatMenuModule
 ];
 
 const sharedComponents = [

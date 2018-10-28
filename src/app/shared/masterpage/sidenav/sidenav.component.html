@@ -1,4 +1,4 @@
-<mat-nav-list>
+<mat-nav-list [ngStyle.xs]="{'padding-top.px': 36}">
   <ng-container *ngFor="let nav of navs">
     <a *ngIf="!nav.external" mat-list-item [routerLink]="nav.link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
       <mat-icon matListIcon>{{nav.icon}}</mat-icon>

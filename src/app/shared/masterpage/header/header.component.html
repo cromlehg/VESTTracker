@@ -1,12 +1,65 @@
+<div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center" class="topHeader">
+    <div class="socialIcons">
+        <a mat-button target="_blank" href="https://t.me/vestchainio">
+            <fa-icon [icon]="['fab', 'telegram']"></fa-icon>
+        </a>
+        <a mat-button target="_blank" href="https://www.facebook.com/vestchain">
+            <fa-icon [icon]="['fab', 'facebook']"></fa-icon>
+        </a>
+        <a mat-button target="_blank" href="https://twitter.com/vestchain">
+            <fa-icon [icon]="['fab', 'twitter']"></fa-icon>
+        </a>
+        <a mat-button target="_blank" href="https://github.com/vestchain">
+            <fa-icon [icon]="['fab', 'github']"></fa-icon>
+        </a>
+        <a mat-button target="_blank" href="https://www.reddit.com/r/vestchain">
+            <fa-icon [icon]="['fab', 'reddit-alien']"></fa-icon>
+        </a>
+    </div>
+    <div>
+        <a mat-button target="_blank" href="https://vestchain.io">Home</a>
+        <span>|</span>
+        <a mat-button target="_blank" href="https://bounty.vestchain.io">Bounty</a>
+        <span>|</span>
+        <a mat-button target="_blank" href="https://news.vestchain.io">News</a>
+        <span>|</span>
+        <a mat-button target="_blank" href="https://wallet.vestchain.io">Wallet</a>
+        <span>|</span>
+        <a mat-button class="active" href="/">Explorer</a>
+        <span>|</span>
+        <mat-menu #menuSupport="matMenu">
+            <a mat-menu-item target="_blank" href="https://support.vestchain.io/legal/">Legal</a>
+            <a mat-menu-item target="_blank" href="https://support.vestchain.io/changelog/">Changelog</a>
+            <a mat-menu-item target="_blank" href="https://support.vestchain.io/careers/">Careers</a>
+            <a mat-menu-item target="_blank" href="https://support.vestchain.io/contacts/">Contacts</a>
+        </mat-menu>
+        <button mat-button [matMenuTriggerFor]="menuSupport">
+            Support
+        </button>
+    </div>
+</div>
 <header fxLayout="row" fxLayoutAlign="start center">
-  <div fxFlex *ngIf="!searchExpanded">
-    <button mat-icon-button fxHide.gt-sm (click)="onMenuToggle.emit()">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <a class="brand" routerLink="/">
-      <img [src]="logoUrl" />
-      <span>{{ appName | translate }}</span>
-    </a>
-  </div>
-  <app-search (onSearchExpanded)="searchExpanded = $event" [ngClass]="searchExpanded ? 'search-expanded' : 'search-collapsed'"></app-search>
+    <div fxFlex *ngIf="!searchExpanded">
+        <button mat-icon-button fxHide.gt-sm (click)="onMenuToggle.emit()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <a class="brand" routerLink="/">
+            <img [src]="logoUrl"/>
+            <!--<span>{{ appName | translate }}</span>-->
+        </a>
+        <div fxShow fxHide.lt-md class="mainMenu" style="float: right;">
+            <ng-container *ngFor="let nav of navs">
+                <a *ngIf="!nav.external" mat-button [routerLink]="nav.link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                    <mat-icon matListIcon>{{nav.icon}}</mat-icon>
+                    <span matLine>{{nav.name}}</span>
+                </a>
+                <a *ngIf="nav.external" mat-button [href]="nav.link" target="_blank">
+                    <mat-icon matListIcon>{{nav.icon}}</mat-icon>
+                    <span matLine>{{nav.name}}</span>
+                </a>
+            </ng-container>
+        </div>
+    </div>
+    <app-search (onSearchExpanded)="searchExpanded = $event"
+                [ngClass]="searchExpanded ? 'search-expanded' : 'search-collapsed'"></app-search>
 </header>

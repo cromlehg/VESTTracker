@@ -1,8 +1,8 @@
-<app-header (onMenuToggle)="sidenav.toggle()"></app-header>
-<mat-sidenav-container>
+<app-header (onMenuToggle)="sidenav.toggle()" [navs]="navs"></app-header>
+<mat-sidenav-container [ngStyle.xs]="{'padding-top.px': 136}">
   <mat-sidenav #sidenav [mode]="sidenavMode$ | async" [opened]="sidenavOpen$ | async" autoFocus="false" fixedInViewport="true"
-    fixedTopGap="50" >
-    <app-sidenav></app-sidenav>
+    fixedTopGap="50" fxHide fxShow.xs fxShow.sm>
+    <app-sidenav [navs]="navs"></app-sidenav>
   </mat-sidenav>
   <mat-sidenav-content fxLayout="column">
     <router-outlet></router-outlet>

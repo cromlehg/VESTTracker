@@ -4,7 +4,7 @@
   </h1>
 </mat-toolbar>
 <div style="margin:10px;">
-  <div class="table-container mat-elevation-z1" *ngIf="blocks$ | async as blocks; else loading">
+  <div class="table-container mat-elevation-z1 greenTopBorder" *ngIf="blocks$ | async as blocks; else loading">
     <table mat-table [dataSource]="blocks" style="border:none;">
       <ng-container *ngIf="columnHeaders$ | async as blocksColumns">
         <tr mat-header-row *matHeaderRowDef="blocksColumns"></tr>
