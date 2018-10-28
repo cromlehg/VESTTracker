@@ -8,6 +8,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { SafeJsonPipe } from 'angular2-prettyjson';
 import { JsonPipe } from '@angular/common';
 import { EosService } from './services/eos.service';
+import { ChainParserService } from './services/chainparser.service';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { Ng2Webstorage } from 'ngx-webstorage';
@@ -40,6 +41,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   providers: [
     EosService,
+    ChainParserService,
     ScatterService,
     AppService,
     LoggerService,

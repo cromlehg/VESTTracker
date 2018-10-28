@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { EosService } from './eos.service';
+import { ChainParserService } from './chainparser.service';
 import { Observable, Subject, timer, from, forkJoin, of } from 'rxjs';
 import { map, filter, share, withLatestFrom, switchMap, catchError, take } from 'rxjs/operators';
+import {sortLinear} from "@swimlane/ngx-charts/release/utils";
 
 const EOS_QUOTE = 60000;
 const RAM_QUOTE = 60000;
@@ -26,7 +28,8 @@ export class AppService {
 
   constructor(
     private http: HttpClient,
-    private eosService: EosService
+    private eosService: EosService,
+    private chainParserService: ChainParserService
   ) {
     this.info$ = timer(0, GET_INFO_INTERVAL).pipe(
       switchMap(() => this.eosService.getDeferInfo()),
@@ -47,6 +50,7 @@ export class AppService {
       }),
       share()
     );
+    /*
     this.recentTransactions$ = this.recentBlocks$.pipe(
       map((blocks: any[]) => {
         return blocks.reduce((previous, current) => {
@@ -60,6 +64,12 @@ export class AppService {
           return previous.concat(transactions);
         }, []);
       }),
+      share()
+    );
+    */
+    this.recentTransactions$ = timer(0, GET_INFO_INTERVAL).pipe(
+      switchMap(() => this.chainParserService.getTxs()),
+      map(data => data.value.sort((a, b) => b.block_num - a.block_num)),
       share()
     );
     this.isMaintenance$ = this.info$.pipe(
